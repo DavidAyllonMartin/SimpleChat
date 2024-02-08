@@ -5,14 +5,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d43d8fff-cfff-4362-91f9-2d8c400b0049" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/ielena/simplechat/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/ielena/simplechat/hello-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/RunClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/RunClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/client/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/client/ClientListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/client/ClientListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/controllers/ChatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/controllers/ChatController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/controllers/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/server/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/server/ServerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/server/ServerHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/temporal_common/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/temporal_common/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/temporal_common/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/temporal_common/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/ielena/simplechat/views/chat-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/ielena/simplechat/views/chat-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/ielena/simplechat/views/login-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/ielena/simplechat/views/login-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -23,14 +42,62 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Deiv/IdeaProjects/2DAM/PSP/SimpleChat/src/main/resources/org/ielena/simplechat/styles&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="org.ielena.simplechat.server" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Deiv\IdeaProjects\2DAM\PSP\SimpleChat\src\main\resources\org\ielena\simplechat\views" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Deiv\IdeaProjects\2DAM\PSP\SimpleChat\src\main\resources\org\ielena\simplechat\styles" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.ielena.simplechat.controllers" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.User1">
+    <configuration name="Server" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="org.ielena.simplechat.server.Server" />
+      <module name="SimpleChat" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="User1" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="org.ielena.simplechat.RunClient" />
+      <module name="SimpleChat" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="User2" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="org.ielena.simplechat.RunClient" />
+      <module name="SimpleChat" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Server" />
+      <item itemvalue="Application.User1" />
+      <item itemvalue="Application.User2" />
+    </list>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -39,7 +106,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1707383956210</updated>
-      <workItem from="1707383957267" duration="1000" />
+      <workItem from="1707383957267" duration="13003000" />
+      <workItem from="1707400960553" duration="2247000" />
     </task>
     <servers />
   </component>

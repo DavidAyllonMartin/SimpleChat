@@ -56,10 +56,11 @@ public class ServerHandler extends Thread{
     //Methods
     @Override
     public void run() {
-
+        boolean isLogged;
         try {
-
-            login();
+            do {
+                isLogged = login();
+            }while (!isLogged);
 
         } catch (IOException | ClassNotFoundException e) {
             throw new RuntimeException(e);
@@ -79,12 +80,38 @@ public class ServerHandler extends Thread{
     private static void processMessage(Message message) throws IOException {
         for (ObjectOutputStream out : Server.users.values()){
             out.writeObject(message);
+            out.flush();
         }
     }
 
-    private void login() throws IOException, ClassNotFoundException {
+    private boolean login() throws IOException, ClassNotFoundException {
         User user = (User) in.readObject();
-        System.out.println(user.getUsername() + "añadido");
-        Server.users.put(user, out);
+        if (Server.users.containsKey(user)){
+            this.out.writeBoolean(false);
+            this.out.flush();
+            return false;
+        }else {
+            Server.users.put(user, out);
+            System.out.println(user.getUsername() + " añadido");
+            this.out.writeBoolean(true);
+            this.out.flush();
+            return true;
+        }
+    }
+
+    public void close() {
+        try {
+            if (out != null) {
+                out.close();
+            }
+            if (in != null) {
+                in.close();
+            }
+            if (socket != null) {
+                socket.close();
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

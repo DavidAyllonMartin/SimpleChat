@@ -15,6 +15,7 @@ import java.io.IOException;
 
 public class ChatController {
     private Client client;
+    private static ChatController controller;
 
     @FXML
     private VBox messageContainer;
@@ -24,6 +25,14 @@ public class ChatController {
 
     @FXML
     private TextArea messageBox;
+
+    public ChatController() {
+        controller = this;
+    }
+
+    public static ChatController getController(){
+        return controller;
+    }
 
     public Client getClient() {
         return client;

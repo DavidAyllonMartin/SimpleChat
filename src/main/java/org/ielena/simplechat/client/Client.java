@@ -1,6 +1,5 @@
 package org.ielena.simplechat.client;
 
-import javafx.application.Platform;
 import org.ielena.simplechat.controllers.ChatController;
 import org.ielena.simplechat.temporal_common.Message;
 import org.ielena.simplechat.temporal_common.User;
@@ -16,17 +15,12 @@ public class Client {
     private Socket socket;
     private ObjectInputStream in;
     private ObjectOutputStream out;
-    private ChatController chatController;
-
     //Constructors
     public Client(Socket socket, User user) throws IOException {
         setSocket(socket);
         setUser(user);
         setOut(socket);
         setIn(socket);
-
-        ClientListener clientListener = new ClientListener(this);
-        clientListener.start();
     }
 
     //Getters and setters
@@ -62,21 +56,19 @@ public class Client {
         this.out = new ObjectOutputStream(socket.getOutputStream());
     }
 
-    public ChatController getChatController() {
-        return chatController;
-    }
-
-    public void setChatController(ChatController chatController) {
-        this.chatController = chatController;
-    }
-
     //Methods
     public void sendMessage(Message message) throws IOException {
         this.out.writeObject(message);
+        this.out.flush();
     }
 
     public void processMessage(Message message){
-        chatController.processMessage(message);
+        ChatController.getController().processMessage(message);
+    }
+
+    public void startListener(){
+        ClientListener clientListener = new ClientListener(this);
+        clientListener.start();
     }
 
     public void close() {

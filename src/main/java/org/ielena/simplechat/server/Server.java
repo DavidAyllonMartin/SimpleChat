@@ -14,7 +14,6 @@ public class Server {
     public static void main(String[] args) {
 
         try (ServerSocket listener = new ServerSocket(PORT)){
-
             System.out.println("Servidor conectado");
 
             while (!listener.isClosed()){

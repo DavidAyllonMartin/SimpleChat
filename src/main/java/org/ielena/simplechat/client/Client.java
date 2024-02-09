@@ -2,6 +2,7 @@ package org.ielena.simplechat.client;
 
 import org.ielena.simplechat.controllers.ChatController;
 import org.ielena.simplechat.temporal_common.Message;
+import org.ielena.simplechat.temporal_common.MessageType;
 import org.ielena.simplechat.temporal_common.User;
 
 import java.io.IOException;
@@ -15,6 +16,7 @@ public class Client {
     private Socket socket;
     private ObjectInputStream in;
     private ObjectOutputStream out;
+    private ClientListener listener;
     //Constructors
     public Client(Socket socket, User user) throws IOException {
         setSocket(socket);
@@ -68,11 +70,22 @@ public class Client {
 
     public void startListener(){
         ClientListener clientListener = new ClientListener(this);
+        listener = clientListener;
         clientListener.start();
     }
 
+    public void stopListener() throws IOException {
+        Message message = new Message(MessageType.DISCONNECT, user, null);
+        out.writeObject(message);
+        out.flush();
+    }
+
     public void close() {
+
         try {
+
+            stopListener();
+
             if (out != null) {
                 out.close();
             }
@@ -84,6 +97,19 @@ public class Client {
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    public void processServerInput(Message message) {
+        switch (message.getMessageType()){
+            case MESSAGE -> processMessage(message);
+            case DISCONNECT -> processDisconnect(message);
+        }
+    }
+
+    private void processDisconnect(Message message) {
+        if (!message.getUser().equals(user)){
+            ChatController.getController().processDisconnect(message);
         }
     }
 }

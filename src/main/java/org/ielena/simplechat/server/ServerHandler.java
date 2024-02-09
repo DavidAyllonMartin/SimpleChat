@@ -1,7 +1,6 @@
 package org.ielena.simplechat.server;
 
-import org.ielena.simplechat.temporal_common.Message;
-import org.ielena.simplechat.temporal_common.User;
+import org.ielena.simplechat.temporal_common.*;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -70,14 +69,35 @@ public class ServerHandler extends Thread{
         while (socket.isConnected()){
             try {
                 Message message = (Message) in.readObject();
-                processMessage(message);
+                processClientOutput(message);
             } catch (IOException | ClassNotFoundException e) {
-                throw new RuntimeException(e);
+                close();
+                //e.printStackTrace();
+                break;
             }
         }
     }
 
-    private static void processMessage(Message message) throws IOException {
+    private void processClientOutput(Message message) throws IOException {
+        switch (message.getMessageType()){
+            case MessageType.MESSAGE:
+                processMessage(message);
+                break;
+            case MessageType.DISCONNECT:
+                processDisconnect(message);
+                break;
+            }
+        }
+
+    private void processDisconnect(Message message) throws IOException {
+        User user = message.getUser();
+        Server.users.remove(user);
+        out.writeObject(message);
+        out.flush();
+        close();
+    }
+
+    private void processMessage(Message message) throws IOException {
         for (ObjectOutputStream out : Server.users.values()){
             out.writeObject(message);
             out.flush();
@@ -114,4 +134,5 @@ public class ServerHandler extends Thread{
             throw new RuntimeException(e);
         }
     }
+
 }

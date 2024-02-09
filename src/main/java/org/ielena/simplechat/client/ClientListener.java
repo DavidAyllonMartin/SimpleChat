@@ -1,12 +1,14 @@
 package org.ielena.simplechat.client;
 
 import org.ielena.simplechat.temporal_common.Message;
+import org.ielena.simplechat.temporal_common.MessageType;
 
 import java.io.IOException;
 
 public class ClientListener extends Thread{
     //Attributes
     private Client client;
+    private boolean isClosed;
 
     //Constructors
     public ClientListener(Client client) {
@@ -27,13 +29,21 @@ public class ClientListener extends Thread{
 
     @Override
     public void run() {
-        while (client.getSocket().isConnected()){
+        while (!isClosed){
             try {
                 Message message = (Message) client.getIn().readObject();
-                client.processMessage(message);
+                checkDisconnect(message);
+                client.processServerInput(message);
             } catch (IOException | ClassNotFoundException e) {
-                throw new RuntimeException(e);
+                isClosed = true;
+                //e.printStackTrace();
             }
+        }
+    }
+
+    private void checkDisconnect(Message message) {
+        if (message.getMessageType() == MessageType.DISCONNECT && message.getUser().equals(client.getUser())){
+            isClosed = true;
         }
     }
 }

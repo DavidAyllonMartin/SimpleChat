@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox spacing="5" styleClass="message-container" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.ielena.simplechat.controllers.ChatMessageController">
+
+    <!-- Nombre de usuario -->
+    <Label fx:id="usernameLabel" styleClass="username" text="User" />
+
+    <!-- Separador -->
+    <Label styleClass="separator" text=":" />
+
+    <!-- Cuerpo del mensaje -->
+    <Label fx:id="messageBodyLabel" styleClass="message-body" text="Message" />
+    <stylesheets>
+        <URL value="@../styles/chat_message_styles.css" />
+    </stylesheets>
+</HBox>

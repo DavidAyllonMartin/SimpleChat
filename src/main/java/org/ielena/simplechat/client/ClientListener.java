@@ -5,7 +5,7 @@ import org.ielena.simplechat.temporal_common.MessageType;
 
 import java.io.IOException;
 
-public class ClientListener extends Thread{
+public class ClientListener extends Thread {
     //Attributes
     private Client client;
     private boolean isClosed;
@@ -16,7 +16,6 @@ public class ClientListener extends Thread{
     }
 
     //Getters and setters
-
     public Client getClient() {
         return client;
     }
@@ -25,13 +24,20 @@ public class ClientListener extends Thread{
         this.client = client;
     }
 
-    //Methods
+    public boolean isClosed() {
+        return isClosed;
+    }
 
+    public void setClosed(boolean closed) {
+        isClosed = closed;
+    }
+
+    //Methods
     @Override
     public void run() {
-        while (!isClosed){
+        while (!isClosed) {
             try {
-                Message message = (Message) client.getIn().readObject();
+                Message message = (Message) client.getClientInputStream().readObject();
                 checkDisconnect(message);
                 client.processServerInput(message);
             } catch (IOException | ClassNotFoundException e) {
@@ -42,7 +48,7 @@ public class ClientListener extends Thread{
     }
 
     private void checkDisconnect(Message message) {
-        if (message.getMessageType() == MessageType.DISCONNECT && message.getUser().equals(client.getUser())){
+        if (message.getMessageType() == MessageType.DISCONNECT && message.getUser().equals(client.getUser())) {
             isClosed = true;
         }
     }

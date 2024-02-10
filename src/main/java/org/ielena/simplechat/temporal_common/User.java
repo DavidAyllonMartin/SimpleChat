@@ -3,7 +3,7 @@ package org.ielena.simplechat.temporal_common;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class User implements Serializable {
+public class User implements Serializable, Destination {
     private String username;
 
     public User(String username) {

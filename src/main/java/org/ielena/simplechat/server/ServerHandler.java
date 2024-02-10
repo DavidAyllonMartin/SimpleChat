@@ -6,21 +6,23 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.List;
+import java.util.Map;
 
-public class ServerHandler extends Thread{
+public class ServerHandler extends Thread {
 
     //Atributes
     private Socket socket;
-    private ObjectInputStream in;
-    private ObjectOutputStream out;
+    private ObjectInputStream serverInputStream;
+    private ObjectOutputStream serverOutputStream;
 
     //Constructor
     public ServerHandler(Socket socket) {
         setSocket(socket);
         System.out.println("Cliente conectado");
         try {
-            setIn(socket);
-            setOut(socket);
+            setServerInputStream(socket);
+            setServerOutputStream(socket);
             System.out.println("Streams creados");
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -36,20 +38,20 @@ public class ServerHandler extends Thread{
         this.socket = socket;
     }
 
-    public ObjectInputStream getIn() {
-        return in;
+    public ObjectInputStream getServerInputStream() {
+        return serverInputStream;
     }
 
-    public void setIn(Socket socket) throws IOException {
-        this.in = new ObjectInputStream(this.socket.getInputStream());
+    public void setServerInputStream(Socket socket) throws IOException {
+        this.serverInputStream = new ObjectInputStream(socket.getInputStream());
     }
 
-    public ObjectOutputStream getOut() {
-        return out;
+    public ObjectOutputStream getServerOutputStream() {
+        return serverOutputStream;
     }
 
-    public void setOut(Socket socket) throws IOException {
-        this.out = new ObjectOutputStream(this.socket.getOutputStream());
+    public void setServerOutputStream(Socket socket) throws IOException {
+        this.serverOutputStream = new ObjectOutputStream(socket.getOutputStream());
     }
 
     //Methods
@@ -59,73 +61,109 @@ public class ServerHandler extends Thread{
         try {
             do {
                 isLogged = login();
-            }while (!isLogged);
+            } while (!isLogged);
 
         } catch (IOException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
 
-
-        while (socket.isConnected()){
-            try {
-                Message message = (Message) in.readObject();
+        try {
+            while (socket.isConnected()) {
+                Message message = (Message) serverInputStream.readObject();
                 processClientOutput(message);
-            } catch (IOException | ClassNotFoundException e) {
-                close();
-                //e.printStackTrace();
-                break;
             }
+        } catch (IOException | ClassNotFoundException e) {
+            //e.printStackTrace();
+        } finally {
+            close();
         }
+
     }
 
     private void processClientOutput(Message message) throws IOException {
-        switch (message.getMessageType()){
-            case MessageType.MESSAGE:
-                processMessage(message);
-                break;
-            case MessageType.DISCONNECT:
-                processDisconnect(message);
-                break;
-            }
+        switch (message.getMessageType()) {
+            case MESSAGE -> processMessage(message);
+            case DISCONNECT -> processDisconnect(message);
+            case CONNECT -> processConnect(message);
         }
-
-    private void processDisconnect(Message message) throws IOException {
-        User user = message.getUser();
-        Server.users.remove(user);
-        out.writeObject(message);
-        out.flush();
-        close();
     }
 
-    private void processMessage(Message message) throws IOException {
-        for (ObjectOutputStream out : Server.users.values()){
+    private void processConnect(Message message) throws IOException {
+        for (ObjectOutputStream out : Server.getUsers().values()) {
             out.writeObject(message);
             out.flush();
         }
     }
 
-    private boolean login() throws IOException, ClassNotFoundException {
-        User user = (User) in.readObject();
-        if (Server.users.containsKey(user)){
-            this.out.writeBoolean(false);
-            this.out.flush();
-            return false;
+    private void processDisconnect(Message message) throws IOException {
+        User user = message.getUser();
+        Server.getUsers().remove(user);
+        processMessage(message);
+        close();
+    }
+
+    private void processMessage(Message message) throws IOException {
+        User destination = (User) message.getDestination();
+        ObjectOutputStream outputStream = Server.getUsers().get(destination);
+
+        if (outputStream == null){
+            User source = message.getUser();
+            Server.getUsers().forEach((user, out) -> {
+                if (!user.equals(source)) {
+                    try {
+                        out.writeObject(message);
+                        out.flush();
+                    } catch (Exception e) {
+                        // Manejar la excepción
+                    }
+                }
+            });
         }else {
-            Server.users.put(user, out);
+            outputStream.writeObject(message);
+            outputStream.flush();
+        }
+
+    }
+
+    private boolean login() throws IOException, ClassNotFoundException {
+        User user = (User) serverInputStream.readObject();
+        if (Server.getUsers().containsKey(user)) {
+
+            ServerResponse serverResponse = new ServerResponse(false, null);
+            serverOutputStream.writeObject(serverResponse);
+            serverOutputStream.flush();
+
+            return false;
+
+        } else {
+
+            //Le mando a todos los que están conectados la notificación de conexión
+            Message message = new Message(MessageType.CONNECT, user, null);
+            processClientOutput(message);
+            this.serverOutputStream.flush();
+
+            //Le notifico que se conectó y le mando la lista de usuarios
+            List<User> users = Server.getUsers().keySet().stream().toList();
+            ServerResponse serverResponse = new ServerResponse(true, users);
+            serverOutputStream.writeObject(serverResponse);
+            serverOutputStream.flush();
+
+            //Añado al usuario a los usuarios conectados
+            Server.getUsers().put(user, serverOutputStream);
             System.out.println(user.getUsername() + " añadido");
-            this.out.writeBoolean(true);
-            this.out.flush();
+
             return true;
+
         }
     }
 
     public void close() {
         try {
-            if (out != null) {
-                out.close();
+            if (serverOutputStream != null) {
+                serverOutputStream.close();
             }
-            if (in != null) {
-                in.close();
+            if (serverInputStream != null) {
+                serverInputStream.close();
             }
             if (socket != null) {
                 socket.close();

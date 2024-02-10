@@ -6,11 +6,16 @@ public class Message implements Serializable {
     private String message;
     private User user;
     private MessageType messageType;
+    private Destination destination;
 
     public Message(MessageType messageType, User user, String message) {
-        this.message = message;
-        this.user = user;
-        this.messageType = messageType;
+        setMessageType(messageType);
+        setUser(user);
+        setMessage(message);
+    }
+    public Message(MessageType messageType, User user, String message, Destination destination){
+        this(messageType, user, message);
+        setDestination(destination);
     }
 
     public String getMessage() {
@@ -35,6 +40,14 @@ public class Message implements Serializable {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Destination getDestination() {
+        return destination;
+    }
+
+    public void setDestination(Destination destination) {
+        this.destination = destination;
     }
 }
 

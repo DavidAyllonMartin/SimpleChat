@@ -1,0 +1,8 @@
+.container {
+    -fx-background-color: #F0EAD6;
+    -fx-background-radius: 15;
+}
+
+.container:hover {
+    -fx-background-color: #eed467; /* Cambiar color de fondo al pasar el mouse */
+}

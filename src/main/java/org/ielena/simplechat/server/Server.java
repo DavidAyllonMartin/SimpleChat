@@ -9,7 +9,7 @@ import java.util.HashMap;
 
 public class Server {
     public static final int PORT = 6000;
-    protected static HashMap<User, ObjectOutputStream> users = new HashMap<>();
+    private static HashMap<User, ObjectOutputStream> users = new HashMap<>();
 
     public static void main(String[] args) {
 
@@ -24,5 +24,9 @@ public class Server {
             throw new RuntimeException(e);
         }
 
+    }
+
+    protected static synchronized HashMap<User, ObjectOutputStream> getUsers() {
+        return users;
     }
 }

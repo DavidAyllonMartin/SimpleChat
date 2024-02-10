@@ -1,0 +1,19 @@
+.username {
+    -fx-text-fill: #333333;
+    -fx-font-weight: bold;
+}
+
+.message-body {
+    -fx-text-fill: #333333;
+}
+
+.separator {
+    -fx-text-fill: #333333;
+    -fx-font-weight: bold;
+}
+
+.message-container {
+    -fx-background-radius: 10;
+    -fx-background-color: #FCEDEA;
+    -fx-padding: 10;
+}

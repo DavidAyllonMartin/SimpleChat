@@ -4,24 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d43d8fff-cfff-4362-91f9-2d8c400b0049" name="Changes" comment="Progreso del día 10/02/2024.&#10;&#10;Refactorización del código.&#10;Implementación de mensajes privados.&#10;Mejora de la interfaz.">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/controllers/ChannelFragmentController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/temporal_common/Channel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/ielena/simplechat/styles/channel_fragment_styles.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/ielena/simplechat/views/channel-fragment.fxml" afterDir="false" />
+    <list default="true" id="d43d8fff-cfff-4362-91f9-2d8c400b0049" name="Changes" comment="Progreso del día 11/02/2024.&#10;&#10;Implementación de canales.">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/ielena/simplechat/images/simple-chat-logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/client/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/controllers/ChannelFragmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/controllers/ChannelFragmentController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/controllers/ChatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/controllers/ChatController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/controllers/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/controllers/UserFragmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/controllers/UserFragmentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/server/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/server/ServerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/server/ServerHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/temporal_common/Destination.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/temporal_common/Destination.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/temporal_common/MessageType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/temporal_common/MessageType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/temporal_common/ServerResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/temporal_common/ServerResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/temporal_common/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/temporal_common/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/ielena/simplechat/styles/user_fragment_styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/ielena/simplechat/styles/user_fragment_styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/ielena/simplechat/styles/channel_fragment_styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/ielena/simplechat/styles/channel_fragment_styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/ielena/simplechat/styles/chat_message_styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/ielena/simplechat/styles/chat_message_styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/ielena/simplechat/styles/chat_styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/ielena/simplechat/styles/chat_styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/ielena/simplechat/views/channel-fragment.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/ielena/simplechat/views/channel-fragment.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/org/ielena/simplechat/views/chat-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/ielena/simplechat/views/chat-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -54,7 +48,7 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Deiv/IdeaProjects/2DAM/PSP/SimpleChat/src/main/resources/org/ielena/simplechat/styles&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Deiv/IdeaProjects/2DAM/PSP/SimpleChat/src/main/resources/org/ielena/simplechat/images&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -68,6 +62,7 @@
       <recent name="org.ielena.simplechat.server" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Deiv\IdeaProjects\2DAM\PSP\SimpleChat\src\main\resources\org\ielena\simplechat\images" />
       <recent name="C:\Users\Deiv\IdeaProjects\2DAM\PSP\SimpleChat\src\main\resources\org\ielena\simplechat\styles" />
       <recent name="C:\Users\Deiv\IdeaProjects\2DAM\PSP\SimpleChat\src\main\resources\org\ielena\simplechat\views" />
     </key>
@@ -78,7 +73,7 @@
       <recent name="org.ielena.simplechat.controllers" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.User2">
+  <component name="RunManager" selected="Application.User1">
     <configuration name="Server" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.ielena.simplechat.server.Server" />
       <module name="SimpleChat" />
@@ -136,7 +131,14 @@
       <workItem from="1707600560795" duration="31000" />
       <workItem from="1707601650711" duration="10484000" />
       <workItem from="1707614836945" duration="3647000" />
-      <workItem from="1707618677006" duration="713000" />
+      <workItem from="1707618677006" duration="999000" />
+      <workItem from="1707648236132" duration="920000" />
+      <workItem from="1707649167172" duration="200000" />
+      <workItem from="1707649378958" duration="2694000" />
+      <workItem from="1707653388798" duration="623000" />
+      <workItem from="1707654023138" duration="571000" />
+      <workItem from="1707654608487" duration="636000" />
+      <workItem from="1707655256275" duration="945000" />
     </task>
     <task id="LOCAL-00001" summary="Innitial commit">
       <created>1707408321107</created>
@@ -159,7 +161,14 @@
       <option name="project" value="LOCAL" />
       <updated>1707603023983</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Progreso del día 11/02/2024.&#10;&#10;Implementación de canales.">
+      <created>1707619664410</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1707619664410</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -169,17 +178,7 @@
     <MESSAGE value="Innitial commit" />
     <MESSAGE value="Implementado login con comprobación de errores y mejoras para menor acoplamiento del código" />
     <MESSAGE value="Progreso del día 10/02/2024.&#10;&#10;Refactorización del código.&#10;Implementación de mensajes privados.&#10;Mejora de la interfaz." />
-    <option name="LAST_COMMIT_MESSAGE" value="Progreso del día 10/02/2024.&#10;&#10;Refactorización del código.&#10;Implementación de mensajes privados.&#10;Mejora de la interfaz." />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/ielena/simplechat/server/ServerHandler.java</url>
-          <line>131</line>
-          <option name="timeStamp" value="20" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Progreso del día 11/02/2024.&#10;&#10;Implementación de canales." />
+    <option name="LAST_COMMIT_MESSAGE" value="Progreso del día 11/02/2024.&#10;&#10;Implementación de canales." />
   </component>
 </project>

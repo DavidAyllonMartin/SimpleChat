@@ -6,7 +6,6 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
-import org.ielena.simplechat.RunClient;
 import org.ielena.simplechat.temporal_common.Channel;
 import org.ielena.simplechat.temporal_common.Destination;
 import org.ielena.simplechat.temporal_common.Message;
@@ -58,7 +57,7 @@ public class ChannelFragmentController {
         this.container = container;
     }
 
-    public void addMessage(Message message){
+    public void addMessage(Message message) {
         messages.add(message);
     }
 
@@ -73,7 +72,14 @@ public class ChannelFragmentController {
     public void onSuscribeClicked(MouseEvent mouseEvent) {
         channelHBox.getChildren().remove(createChannelButton);
         container.addEventHandler(MouseEvent.MOUSE_CLICKED, this::onItemClicked);
-        //container.getStylesheets().add(RunClient.class.getResource("styles/user_fragment_styles.css").toExternalForm());
+        container.setStyle("-fx-background-color: #B3D9FF;");
+        container.setOnMouseEntered(e -> {
+            container.setStyle("-fx-background-color: #B3D9FF;");
+        });
+
+        container.setOnMouseExited(e -> {
+            container.setStyle("-fx-background-color: #dce6ff;");
+        });
         Channel channel = (Channel) destination;
         ChatController.getController().suscribeChannel(channel);
     }

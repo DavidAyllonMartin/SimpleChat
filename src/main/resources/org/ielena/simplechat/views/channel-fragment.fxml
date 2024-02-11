@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="container" prefHeight="35.0" styleClass="container" stylesheets="@../styles/channel_fragment_styles.css" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.ielena.simplechat.controllers.ChannelFragmentController">
+<AnchorPane fx:id="container" prefHeight="35.0" styleClass="fragment" stylesheets="@../styles/channel_fragment_styles.css" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.ielena.simplechat.controllers.ChannelFragmentController">
 <children>
     <HBox fx:id="channelHBox" alignment="CENTER" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <children>
-            <Label fx:id="userName" text="Label" />
-            <Button fx:id="createChannelButton" mnemonicParsing="false" onMouseClicked="#onSuscribeClicked" text="Suscribe" />
+            <Label fx:id="userName" alignment="CENTER" prefWidth="140.0" text="Label" HBox.hgrow="ALWAYS" />
+            <Button fx:id="createChannelButton" mnemonicParsing="false" onMouseClicked="#onSuscribeClicked" styleClass="suscribe-button">
+               <graphic>
+                  <FontAwesomeIconView glyphName="SIGN_IN" size="20" styleClass="suscribe-button" />
+               </graphic>
+            </Button>
         </children>
     </HBox>
 </children>

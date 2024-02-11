@@ -1,8 +1,6 @@
-/* Estilos para el encabezado */
 .header {
-    -fx-background-color: rgba(0, 138, 182, 0.46);
-    -fx-padding: 10px;
-    -fx-alignment: center;
+    -fx-background-color: #0058a7;
+    -fx-padding: 10;
 }
 
 .title-label {
@@ -17,20 +15,17 @@
 .user-label {
     -fx-font-size: 15px;
     -fx-font-weight: bold;
-    -fx-text-fill: white;
-    -fx-effect: dropshadow(gaussian, black, 1, 3, 0, 0);
+    -fx-text-fill: #ffcc33;
+    -fx-effect: dropshadow(three-pass-box, black, 1, 1, 1, 1);
+
 }
 
 .message-box {
     -fx-font-size: 14px;
 }
 
-.send-button {
-    -fx-font-size: 14px;
-}
-
 .online-users-label {
-    -fx-text-fill: #fc6747;
+    -fx-text-fill: #ffcc33;
     -fx-font-size: 14px;
 }
 
@@ -39,4 +34,29 @@
     -fx-font-weight: bold;
     -fx-text-fill: black;
     -fx-padding: 5px;
+}
+
+.send-button {
+    -fx-color: #ffffff;
+    -fx-padding: 5px 20px;
+    -fx-background-color: linear-gradient(to bottom, #6EB5FF 0%, #4682B4 100%);
+    -fx-font-size: 14px;
+    -fx-border-radius: 3px;
+    cursor: hand;
+    -fx-opacity: 1;
+}
+
+.send-button:hover {
+    -fx-cursor: hand;
+    -fx-opacity: 0.8;
+}
+
+.suscribe-button{
+    -fx-background-color: linear-gradient(to bottom, #ffcc33 0%, #F0EAD6 100%);
+
+}
+
+.suscribe-button:hover {
+    -fx-cursor: hand;
+    -fx-opacity: 0.8;
 }

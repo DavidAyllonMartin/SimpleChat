@@ -3,7 +3,10 @@ package org.ielena.simplechat.controllers;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -64,6 +67,14 @@ public class ChatController {
         this.activeDestination = activeDestination;
     }
 
+    public Label getConnectedUser() {
+        return connectedUser;
+    }
+
+    public void setConnectedUser(Label connectedUser) {
+        this.connectedUser = connectedUser;
+    }
+
     public void setUserList(List<User> users) {
         users.forEach(user -> {
             try {
@@ -101,13 +112,12 @@ public class ChatController {
         if (!msg.isEmpty()) {
             Message message = new Message(MessageType.MESSAGE, client.getUser(), msg, activeDestination);
             client.sendMessage(message);
-            System.out.println("Mensaje enviado");
-            if (activeDestination == null){
+            if (activeDestination == null) {
                 generalMessages.add(message);
-            }else if (activeDestination instanceof User user){
+            } else if (activeDestination instanceof User user) {
                 UserFragmentController userController = connectedUsers.get(user);
                 userController.addMessage(message);
-            }else if (activeDestination instanceof Channel channel){
+            } else if (activeDestination instanceof Channel channel) {
                 ChannelFragmentController channelController = createdChannels.get(channel);
                 channelController.addMessage(message);
             }
@@ -125,24 +135,24 @@ public class ChatController {
     public void receiveMessage(Message message) {
         User source = message.getUser();
         Destination destination = message.getDestination();
-        if (destination == null){
+        if (destination == null) {
             generalMessages.add(message);
-            if (activeDestination == null){
+            if (activeDestination == null) {
                 writeMessageInChatPanel(message);
             }
 
-        }else if (destination instanceof User){
+        } else if (destination instanceof User) {
             UserFragmentController userController = connectedUsers.get(source);
             userController.addMessage(message);
-            if (source.equals(activeDestination)){
+            if (source.equals(activeDestination)) {
                 writeMessageInChatPanel(message);
             }
 
-        }else if (destination instanceof Channel channel){
+        } else if (destination instanceof Channel channel) {
 
             ChannelFragmentController channelController = createdChannels.get(channel);
             channelController.addMessage(message);
-            if (channel.equals(activeDestination)){
+            if (channel.equals(activeDestination)) {
                 writeMessageInChatPanel(message);
             }
         }
@@ -179,8 +189,8 @@ public class ChatController {
         decreaseOnlineCount();
     }
 
-    public void changeActiveDestination(Destination destination, List<Message> messages){
-        if (!destination.equals(activeDestination)){
+    public void changeActiveDestination(Destination destination, List<Message> messages) {
+        if (!destination.equals(activeDestination)) {
             setActiveDestination(destination);
             this.chatWith.setText("Chat with " + destination.getDestinationName());
             Platform.runLater(
@@ -237,7 +247,7 @@ public class ChatController {
     public void onCreateChannelClicked(MouseEvent mouseEvent) {
         String channelName = channelTextField.getText().trim();
         channelTextField.clear();
-        if (!channelName.isEmpty()){
+        if (!channelName.isEmpty()) {
             Channel channel = new Channel(channelName);
             Message message = new Message(MessageType.CREATE_CHANNEL, client.getUser(), null, channel);
             try {
@@ -270,31 +280,4 @@ public class ChatController {
             throw new RuntimeException(e);
         }
     }
-
-
-    public Label getChatWith() {
-        return chatWith;
-    }
-
-    public void setChatWith(Label chatWith) {
-        this.chatWith = chatWith;
-    }
-
-    public Label getConnectedUser() {
-        return connectedUser;
-    }
-
-    public void setConnectedUser(Label connectedUser) {
-        this.connectedUser = connectedUser;
-    }
-
-    public TextField getChannelTextField() {
-        return channelTextField;
-    }
-
-    public void setChannelTextField(TextField channelTextField) {
-        this.channelTextField = channelTextField;
-    }
-
-
 }

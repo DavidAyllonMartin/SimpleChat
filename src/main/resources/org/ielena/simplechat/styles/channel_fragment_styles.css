@@ -1,4 +1,9 @@
-.container {
-    -fx-background-color: #F0EAD6;
+.fragment {
+    -fx-background-color: #b0b0b0;
     -fx-background-radius: 15;
+}
+
+.suscribe-button{
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
 }

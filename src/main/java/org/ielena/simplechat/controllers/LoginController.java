@@ -24,13 +24,13 @@ import java.security.InvalidParameterException;
 import java.util.List;
 
 public class LoginController {
-    public static final String CONNECTION_ERROR = "Error de conexión";
-    public static final String USER_ALREADY_REGISTERED = "El nombre de usuario ya está registrado en el servidor.";
-    public static final String NAME_ERROR = "Error en el nombre";
-    public static final String NAME_FIELD_EMPTY = "El campo nombre no puede estar vacío";
-    public static final String CONNECTION_PORT_ERROR = "No se pudo establecer la conexión en el puerto seleccionado";
-    public static final String HOST_ERROR = "Error en el host";
-    public static final String UNKNOWN_HOST = "No se reconoce el host";
+    public static final String CONNECTION_ERROR = "Connection Error";
+    public static final String USER_ALREADY_REGISTERED = "The username is already registered on the server.";
+    public static final String NAME_ERROR = "Name Error";
+    public static final String NAME_FIELD_EMPTY = "The name field cannot be empty.";
+    public static final String CONNECTION_PORT_ERROR = "Could not establish connection on the selected port.";
+    public static final String HOST_ERROR = "Host Error";
+    public static final String UNKNOWN_HOST = "Unknown Host";
     private static final int MAX_USERNAME_LENGTH = 20;
     //Attributes
     @FXML

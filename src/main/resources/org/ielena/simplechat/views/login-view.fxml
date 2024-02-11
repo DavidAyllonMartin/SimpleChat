@@ -1,15 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" onKeyPressed="#onEnterButtonPressed" spacing="20.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.ielena.simplechat.controllers.LoginController">
+<VBox alignment="CENTER" minHeight="300.0" minWidth="250.0" spacing="20.0" styleClass="login-container" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.ielena.simplechat.controllers.LoginController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
-   <TextField fx:id="usernameText" promptText="Username" text="User" />
-   <TextField fx:id="serverText" promptText="Server" text="localhost" />
-   <TextField fx:id="portText" promptText="Port" text="6000" />
-    <Button onAction="#onConnectClick" text="Connect" />
+    <stylesheets>
+        <URL value="@../styles/login_styles.css" />
+
+    </stylesheets>
+    <children>
+      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/simple-chat-logo.png" />
+         </image>
+      </ImageView>
+        <VBox alignment="CENTER" styleClass="login-form">
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            </padding>
+            <children>
+                <TextField fx:id="usernameText" promptText="Username" text="User" />
+                <TextField fx:id="serverText" promptText="Server" text="localhost" />
+                <TextField fx:id="portText" promptText="Port" text="6000" />
+                <Button onAction="#onConnectClick" text="Connect" />
+            </children>
+        </VBox>
+    </children>
 </VBox>

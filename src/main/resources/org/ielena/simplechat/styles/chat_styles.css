@@ -25,8 +25,9 @@
 }
 
 .online-users-label {
-    -fx-text-fill: #ffcc33;
+    -fx-text-fill: black;
     -fx-font-size: 14px;
+    -fx-font-weight: bold;
 }
 
 .message-box-header {
@@ -39,7 +40,7 @@
 .send-button {
     -fx-color: #ffffff;
     -fx-padding: 5px 20px;
-    -fx-background-color: linear-gradient(to bottom, #6EB5FF 0%, #4682B4 100%);
+    -fx-background-color: linear-gradient(to bottom, #003e6d 0%, #396e8f 3%, #5c93c8 35%, #396e8f 97%, #003e6d 100%);
     -fx-font-size: 14px;
     -fx-border-radius: 3px;
     cursor: hand;

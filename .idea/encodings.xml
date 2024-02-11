@@ -3,6 +3,7 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/org/ielena/simplechat/images/simple-chat-icon.png" charset="ISO-8859-1" />
     <file url="file://$PROJECT_DIR$/src/main/resources/org/ielena/simplechat/images/simple-chat-logo.png" charset="ISO-8859-1" />
     <file url="file://$PROJECT_DIR$/src/main/resources/org/ielena/simplechat/views/chat-view.fxml" charset="UTF-8" />
   </component>

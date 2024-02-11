@@ -4,19 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d43d8fff-cfff-4362-91f9-2d8c400b0049" name="Changes" comment="Progreso del día 11/02/2024.&#10;&#10;Implementación de canales.">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/ielena/simplechat/images/simple-chat-logo.png" afterDir="false" />
+    <list default="true" id="d43d8fff-cfff-4362-91f9-2d8c400b0049" name="Changes" comment="Progreso del día 11/02/2024.&#10;&#10;Mejoras gráficas e iconos.">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/ielena/simplechat/images/simple-chat-icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/ielena/simplechat/styles/login_styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/controllers/ChannelFragmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/controllers/ChannelFragmentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/controllers/ChatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/controllers/ChatController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/controllers/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/ielena/simplechat/styles/channel_fragment_styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/ielena/simplechat/styles/channel_fragment_styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/ielena/simplechat/styles/chat_message_styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/ielena/simplechat/styles/chat_message_styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/RunClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/RunClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/server/Server.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/org/ielena/simplechat/styles/chat_styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/ielena/simplechat/styles/chat_styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/ielena/simplechat/views/channel-fragment.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/ielena/simplechat/views/channel-fragment.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/org/ielena/simplechat/views/chat-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/ielena/simplechat/views/chat-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/ielena/simplechat/views/login-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/ielena/simplechat/views/login-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,7 +135,9 @@
       <workItem from="1707653388798" duration="623000" />
       <workItem from="1707654023138" duration="571000" />
       <workItem from="1707654608487" duration="636000" />
-      <workItem from="1707655256275" duration="945000" />
+      <workItem from="1707655256275" duration="1343000" />
+      <workItem from="1707660752178" duration="4496000" />
+      <workItem from="1707665391959" duration="1015000" />
     </task>
     <task id="LOCAL-00001" summary="Innitial commit">
       <created>1707408321107</created>
@@ -168,7 +167,14 @@
       <option name="project" value="LOCAL" />
       <updated>1707619664410</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Progreso del día 11/02/2024.&#10;&#10;Mejoras gráficas e iconos.">
+      <created>1707656591000</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1707656591000</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -179,6 +185,7 @@
     <MESSAGE value="Implementado login con comprobación de errores y mejoras para menor acoplamiento del código" />
     <MESSAGE value="Progreso del día 10/02/2024.&#10;&#10;Refactorización del código.&#10;Implementación de mensajes privados.&#10;Mejora de la interfaz." />
     <MESSAGE value="Progreso del día 11/02/2024.&#10;&#10;Implementación de canales." />
-    <option name="LAST_COMMIT_MESSAGE" value="Progreso del día 11/02/2024.&#10;&#10;Implementación de canales." />
+    <MESSAGE value="Progreso del día 11/02/2024.&#10;&#10;Mejoras gráficas e iconos." />
+    <option name="LAST_COMMIT_MESSAGE" value="Progreso del día 11/02/2024.&#10;&#10;Mejoras gráficas e iconos." />
   </component>
 </project>

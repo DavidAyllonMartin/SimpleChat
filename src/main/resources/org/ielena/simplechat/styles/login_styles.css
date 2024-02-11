@@ -1,0 +1,24 @@
+.login-container {
+    -fx-background-color: #0058a7;
+}
+
+.login-form {
+    -fx-padding: 20px;
+    -fx-spacing: 10px;
+    -fx-background-color: rgba(255, 255, 255, 0.5);
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+}
+
+.login-form .text-field, .login-form .button {
+    -fx-background-color: #FFF;
+}
+
+.login-form .button {
+    -fx-background-color: linear-gradient(to bottom, #ffe49e 0%,#ffb700 3%,#ffad00 35%,#ff9000 97%,#e27f00 100%);
+}
+
+.login-form .button:hover {
+    -fx-cursor: hand;
+    -fx-opacity: 0.8;
+}

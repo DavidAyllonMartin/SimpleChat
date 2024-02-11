@@ -153,6 +153,7 @@ public class LoginController {
         chatController.getConnectedUser().setText(client.getUser().getUsername());
 
         stage.setScene(scene);
+        stage.centerOnScreen();
         stage.show();
     }
 

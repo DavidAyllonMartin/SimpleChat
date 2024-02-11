@@ -6,13 +6,13 @@ import org.ielena.simplechat.temporal_common.User;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
-import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class Server {
     public static final int PORT = 6000;
-    private static HashMap<User, ObjectOutputStream> users = new HashMap<>();
-    private static HashMap<Channel, List<User>> channels = new HashMap<>();
+    private static final ConcurrentHashMap<User, ObjectOutputStream> users = new ConcurrentHashMap<>();
+    private static final ConcurrentHashMap<Channel, List<User>> channels = new ConcurrentHashMap<>();
 
     public static void main(String[] args) {
 
@@ -24,15 +24,15 @@ public class Server {
             }
 
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
 
     }
 
-    protected static synchronized HashMap<User, ObjectOutputStream> getUsers() {
+    protected static ConcurrentHashMap<User, ObjectOutputStream> getUsers() {
         return users;
     }
-    protected static synchronized HashMap<Channel, List<User>> getChannels(){
+    protected static ConcurrentHashMap<Channel, List<User>> getChannels(){
         return channels;
     }
 }

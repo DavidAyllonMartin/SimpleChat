@@ -10,6 +10,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import org.ielena.simplechat.RunClient;
 import org.ielena.simplechat.client.Client;
+import org.ielena.simplechat.temporal_common.Channel;
 import org.ielena.simplechat.temporal_common.ServerResponse;
 import org.ielena.simplechat.temporal_common.User;
 
@@ -80,7 +81,7 @@ public class LoginController {
             ServerResponse serverResponse = login(client);
             boolean isConnected = serverResponse.isConnected();
             if (isConnected) {
-                openChatWindow(serverResponse.getUsers());
+                openChatWindow(serverResponse.getUsers(), serverResponse.getChannels());
             } else {
                 showError(CONNECTION_ERROR, USER_ALREADY_REGISTERED);
             }
@@ -136,7 +137,7 @@ public class LoginController {
         }
     }
 
-    private void openChatWindow(List<User> users) {
+    private void openChatWindow(List<User> users, List<Channel> channels) {
         FXMLLoader fxmlLoader = new FXMLLoader(RunClient.class.getResource("views/chat-view.fxml"));
         Scene scene;
         try {
@@ -148,6 +149,7 @@ public class LoginController {
         ChatController chatController = fxmlLoader.getController();
         chatController.setClient(client);
         chatController.setUserList(users);
+        chatController.setChannelList(channels);
         chatController.getConnectedUser().setText(client.getUser().getUsername());
 
         stage.setScene(scene);

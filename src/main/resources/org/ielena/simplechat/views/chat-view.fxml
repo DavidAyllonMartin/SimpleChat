@@ -104,7 +104,7 @@
                                     <HBox>
                                        <children>
                                           <TextField fx:id="channelTextField" />
-                                          <Button fx:id="createChannelButton" mnemonicParsing="false" text="Create" />
+                                          <Button fx:id="createChannelButton" mnemonicParsing="false" onMouseClicked="#onCreateChannelClicked" text="Create" />
                                        </children>
                                     </HBox>
                                  </children>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="container" prefHeight="35.0" styleClass="container" stylesheets="@../styles/channel_fragment_styles.css" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.ielena.simplechat.controllers.ChannelFragmentController">
+<children>
+    <HBox fx:id="channelHBox" alignment="CENTER" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <children>
+            <Label fx:id="userName" text="Label" />
+            <Button fx:id="createChannelButton" mnemonicParsing="false" onMouseClicked="#onSuscribeClicked" text="Suscribe" />
+        </children>
+    </HBox>
+</children>
+</AnchorPane>

@@ -33,4 +33,9 @@ public class User implements Serializable, Destination {
     public int hashCode() {
         return username != null ? username.hashCode() : 0;
     }
+
+    @Override
+    public String getDestinationName() {
+        return getUsername();
+    }
 }

@@ -1,20 +1,28 @@
 package org.ielena.simplechat.controllers;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import org.ielena.simplechat.RunClient;
+import org.ielena.simplechat.temporal_common.Channel;
 import org.ielena.simplechat.temporal_common.Destination;
 import org.ielena.simplechat.temporal_common.Message;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserFragmentController {
+public class ChannelFragmentController {
     @FXML
     private Label userName;
     @FXML
     private AnchorPane container;
+    @FXML
+    private HBox channelHBox;
+    @FXML
+    private Button createChannelButton;
     private Destination destination;
     private List<Message> messages = new ArrayList<>();
 
@@ -60,5 +68,13 @@ public class UserFragmentController {
 
     public void setData(Destination destination) {
         userName.setText(destination.getDestinationName());
+    }
+
+    public void onSuscribeClicked(MouseEvent mouseEvent) {
+        channelHBox.getChildren().remove(createChannelButton);
+        container.addEventHandler(MouseEvent.MOUSE_CLICKED, this::onItemClicked);
+        //container.getStylesheets().add(RunClient.class.getResource("styles/user_fragment_styles.css").toExternalForm());
+        Channel channel = (Channel) destination;
+        ChatController.getController().suscribeChannel(channel);
     }
 }

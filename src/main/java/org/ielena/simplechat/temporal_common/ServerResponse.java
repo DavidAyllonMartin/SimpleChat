@@ -7,10 +7,12 @@ import java.util.Objects;
 public class ServerResponse implements Serializable {
     private boolean connected;
     private List<User> users;
+    private List<Channel> channels;
 
-    public ServerResponse(boolean connected, List<User> users) {
-        this.connected = connected;
-        this.users = users;
+    public ServerResponse(boolean connected, List<User> users, List<Channel> channels) {
+        setConnected(connected);
+        setUsers(users);
+        setChannels(channels);
     }
 
     public boolean isConnected() {
@@ -27,6 +29,14 @@ public class ServerResponse implements Serializable {
 
     public void setUsers(List<User> users) {
         this.users = users;
+    }
+
+    public List<Channel> getChannels() {
+        return channels;
+    }
+
+    public void setChannels(List<Channel> channels) {
+        this.channels = channels;
     }
 
     @Override

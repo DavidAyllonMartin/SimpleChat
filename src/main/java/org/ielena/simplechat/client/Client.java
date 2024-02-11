@@ -1,6 +1,7 @@
 package org.ielena.simplechat.client;
 
 import org.ielena.simplechat.controllers.ChatController;
+import org.ielena.simplechat.temporal_common.Channel;
 import org.ielena.simplechat.temporal_common.Message;
 import org.ielena.simplechat.temporal_common.MessageType;
 import org.ielena.simplechat.temporal_common.User;
@@ -65,6 +66,7 @@ public class Client {
             case MESSAGE -> processMessageFromServer(message);
             case DISCONNECT -> userDisconnected(message);
             case CONNECT -> userConnected(message);
+            case CREATE_CHANNEL -> createChannel(message);
         }
     }
 
@@ -89,8 +91,17 @@ public class Client {
     }
 
     public void sendMessage(Message message) throws IOException {
-        this.clientOutputStream.writeObject(message);
-        this.clientOutputStream.flush();
+        clientOutputStream.writeObject(message);
+        clientOutputStream.flush();
+    }
+
+    public void createChannel(Message message){
+        Channel channel = (Channel) message.getDestination();
+        try {
+            ChatController.getController().createChannel(channel);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void startListener() {

@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -70,6 +71,7 @@ public class ServerHandler extends Thread {
         try {
             while (socket.isConnected()) {
                 Message message = (Message) serverInputStream.readObject();
+                System.out.println("Mensaje recibido");
                 processClientOutput(message);
             }
         } catch (IOException | ClassNotFoundException e) {
@@ -85,6 +87,30 @@ public class ServerHandler extends Thread {
             case MESSAGE -> processMessage(message);
             case DISCONNECT -> processDisconnect(message);
             case CONNECT -> processConnect(message);
+            case CREATE_CHANNEL -> processCreateChannel(message);
+            case SUSCRIBE_CHANNEL -> processSuscribeChannel(message);
+        }
+    }
+
+    private void processSuscribeChannel(Message message) {
+        Channel channel = (Channel) message.getDestination();
+        User user = message.getUser();
+        Server.getChannels().get(channel).add(user);
+    }
+
+    private void processCreateChannel(Message message) {
+        Channel channel = (Channel) message.getDestination();
+        if (!Server.getChannels().containsKey(channel)){
+            List<User> users = new ArrayList<>();
+            Server.getChannels().put(channel, users);
+            Server.getUsers().forEach((user, out) -> {
+                try {
+                    out.writeObject(message);
+                    out.flush();
+                } catch (Exception e) {
+                    // Manejar la excepción
+                }
+            });
         }
     }
 
@@ -103,11 +129,9 @@ public class ServerHandler extends Thread {
     }
 
     private void processMessage(Message message) throws IOException {
-        User destination = (User) message.getDestination();
-        ObjectOutputStream outputStream = Server.getUsers().get(destination);
-
-        if (outputStream == null){
-            User source = message.getUser();
+        Destination destination = message.getDestination();
+        User source = message.getUser();
+        if (destination == null){
             Server.getUsers().forEach((user, out) -> {
                 if (!user.equals(source)) {
                     try {
@@ -118,9 +142,26 @@ public class ServerHandler extends Thread {
                     }
                 }
             });
-        }else {
+        }else if (destination instanceof User user){
+
+            ObjectOutputStream outputStream = Server.getUsers().get(user);
             outputStream.writeObject(message);
             outputStream.flush();
+
+        } else if (destination instanceof Channel channel) {
+            Server.getChannels().get(channel).forEach(user -> {
+                if (!user.equals(source)){
+                    try {
+                        ObjectOutputStream outputStream = Server.getUsers().get(user);
+                        outputStream.writeObject(message);
+                        outputStream.flush();
+                        System.out.println("Mensaje de canal enviado");
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            });
+
         }
 
     }
@@ -129,7 +170,7 @@ public class ServerHandler extends Thread {
         User user = (User) serverInputStream.readObject();
         if (Server.getUsers().containsKey(user)) {
 
-            ServerResponse serverResponse = new ServerResponse(false, null);
+            ServerResponse serverResponse = new ServerResponse(false, null, null);
             serverOutputStream.writeObject(serverResponse);
             serverOutputStream.flush();
 
@@ -144,7 +185,8 @@ public class ServerHandler extends Thread {
 
             //Le notifico que se conectó y le mando la lista de usuarios
             List<User> users = Server.getUsers().keySet().stream().toList();
-            ServerResponse serverResponse = new ServerResponse(true, users);
+            List<Channel> channels = Server.getChannels().keySet().stream().toList();
+            ServerResponse serverResponse = new ServerResponse(true, users, channels);
             serverOutputStream.writeObject(serverResponse);
             serverOutputStream.flush();
 

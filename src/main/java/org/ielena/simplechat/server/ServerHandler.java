@@ -8,7 +8,6 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class ServerHandler extends Thread {
 
@@ -71,7 +70,7 @@ public class ServerHandler extends Thread {
         try {
             while (socket.isConnected()) {
                 Message message = (Message) serverInputStream.readObject();
-                System.out.println("Mensaje recibido");
+                System.out.printf("Mensaje de %s recibido", message.getUser().getUsername());
                 processClientOutput(message);
             }
         } catch (IOException | ClassNotFoundException e) {
@@ -155,7 +154,6 @@ public class ServerHandler extends Thread {
                         ObjectOutputStream outputStream = Server.getUsers().get(user);
                         outputStream.writeObject(message);
                         outputStream.flush();
-                        System.out.println("Mensaje de canal enviado");
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }

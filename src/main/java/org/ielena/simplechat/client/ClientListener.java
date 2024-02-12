@@ -39,7 +39,7 @@ public class ClientListener extends Thread {
             try {
                 Message message = (Message) client.getClientInputStream().readObject();
                 checkDisconnect(message);
-                client.processServerInput(message);
+                client.notifyObservers(message);
             } catch (IOException | ClassNotFoundException e) {
                 isClosed = true;
                 //e.printStackTrace();

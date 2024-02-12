@@ -1,19 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="SimpleChat:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d43d8fff-cfff-4362-91f9-2d8c400b0049" name="Changes" comment="Progreso del día 11/02/2024.&#10;&#10;Mejoras gráficas e iconos.">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/ielena/simplechat/images/simple-chat-icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/ielena/simplechat/styles/login_styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+    <list default="true" id="d43d8fff-cfff-4362-91f9-2d8c400b0049" name="Changes" comment="Progreso del día 11/02/2024.&#10;&#10;Mejoras gráficas y mejoras en la gestión de concurrencia en el servidor.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/Launcher.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/client/ChatClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/client/ClientObserver.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/util/EventDispatcher.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/util/EventListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/RunClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/RunClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/server/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/ielena/simplechat/styles/chat_styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/ielena/simplechat/styles/chat_styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/client/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/client/ClientListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/client/ClientListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/controllers/ChatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/controllers/ChatController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/controllers/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/server/ServerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/ielena/simplechat/server/ServerHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/org/ielena/simplechat/views/chat-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/ielena/simplechat/views/chat-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/ielena/simplechat/views/login-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/ielena/simplechat/views/login-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +40,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="2c4w2z5kqyiQ1qGeAzLTRKcz8nE" />
@@ -50,6 +65,9 @@
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.35287356&quot;,
     &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
@@ -70,7 +88,7 @@
       <recent name="org.ielena.simplechat.controllers" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.User1">
+  <component name="RunManager" selected="Application.User2">
     <configuration name="Server" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="org.ielena.simplechat.server.Server" />
       <module name="SimpleChat" />
@@ -137,7 +155,13 @@
       <workItem from="1707654608487" duration="636000" />
       <workItem from="1707655256275" duration="1343000" />
       <workItem from="1707660752178" duration="4496000" />
-      <workItem from="1707665391959" duration="1015000" />
+      <workItem from="1707665391959" duration="1745000" />
+      <workItem from="1707667181310" duration="21000" />
+      <workItem from="1707674141863" duration="1059000" />
+      <workItem from="1707681298004" duration="1071000" />
+      <workItem from="1707683872124" duration="14000" />
+      <workItem from="1707685200774" duration="245000" />
+      <workItem from="1707688489763" duration="11109000" />
     </task>
     <task id="LOCAL-00001" summary="Innitial commit">
       <created>1707408321107</created>
@@ -174,11 +198,49 @@
       <option name="project" value="LOCAL" />
       <updated>1707656591000</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Progreso del día 11/02/2024.&#10;&#10;Mejoras gráficas y mejoras en la gestión de concurrencia en el servidor.">
+      <created>1707666947819</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1707666947819</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="HEAD" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="master" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Innitial commit" />
@@ -186,6 +248,7 @@
     <MESSAGE value="Progreso del día 10/02/2024.&#10;&#10;Refactorización del código.&#10;Implementación de mensajes privados.&#10;Mejora de la interfaz." />
     <MESSAGE value="Progreso del día 11/02/2024.&#10;&#10;Implementación de canales." />
     <MESSAGE value="Progreso del día 11/02/2024.&#10;&#10;Mejoras gráficas e iconos." />
-    <option name="LAST_COMMIT_MESSAGE" value="Progreso del día 11/02/2024.&#10;&#10;Mejoras gráficas e iconos." />
+    <MESSAGE value="Progreso del día 11/02/2024.&#10;&#10;Mejoras gráficas y mejoras en la gestión de concurrencia en el servidor." />
+    <option name="LAST_COMMIT_MESSAGE" value="Progreso del día 11/02/2024.&#10;&#10;Mejoras gráficas y mejoras en la gestión de concurrencia en el servidor." />
   </component>
 </project>

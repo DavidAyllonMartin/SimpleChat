@@ -10,13 +10,16 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Client {
+public class Client implements ChatClient{
     //Attributes
     private User user;
     private Socket socket;
     private ObjectInputStream clientInputStream;
     private ObjectOutputStream clientOutputStream;
+    private List<ClientObserver> observers = new ArrayList<>();
     private ClientListener listener;
 
     //Constructors
@@ -61,47 +64,27 @@ public class Client {
     }
 
     //Methods
-    public void processServerInput(Message message) {
-        switch (message.getMessageType()) {
-            case MESSAGE -> processMessageFromServer(message);
-            case DISCONNECT -> userDisconnected(message);
-            case CONNECT -> userConnected(message);
-            case CREATE_CHANNEL -> createChannel(message);
+    public void addObserver(ClientObserver observer) {
+        observers.add(observer);
+    }
+
+    public void removeObserver(ClientObserver observer) {
+        observers.remove(observer);
+    }
+
+    public void notifyObservers(Message message) {
+        for (ClientObserver observer : observers) {
+            observer.receiveServerInput(message);
         }
     }
-
-    private void processMessageFromServer(Message message) {
-        ChatController.getController().receiveMessage(message);
-    }
-
-    private void userConnected(Message message) {
-        if (!message.getUser().equals(user)) {
-            try {
-                ChatController.getController().processConnectedUser(message);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
-    }
-
-    private void userDisconnected(Message message) {
-        if (!message.getUser().equals(user)) {
-            ChatController.getController().processDisconnectedUser(message);
-        }
-    }
-
-    public void sendMessage(Message message) throws IOException {
-        clientOutputStream.writeObject(message);
-        clientOutputStream.flush();
-    }
-
-    public void createChannel(Message message){
-        Channel channel = (Channel) message.getDestination();
+    public void sendMessage(Message message) {
         try {
-            ChatController.getController().createChannel(channel);
+            clientOutputStream.writeObject(message);
+            clientOutputStream.flush();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
+
     }
 
     public void startListener() {

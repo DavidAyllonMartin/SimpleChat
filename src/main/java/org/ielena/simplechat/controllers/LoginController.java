@@ -152,6 +152,8 @@ public class LoginController {
         chatController.setChannelList(channels);
         chatController.getConnectedUser().setText(client.getUser().getUsername());
 
+        client.addObserver(chatController);
+
         stage.setScene(scene);
         stage.centerOnScreen();
         stage.show();
